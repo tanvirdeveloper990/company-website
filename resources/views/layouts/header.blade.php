@@ -1,5 +1,6 @@
 @php 
 $services = \App\Models\Service::where('status',1)->get();
+$setting = \App\Models\Setting::first();
 @endphp
 
 <!-- Navbar & Hero Start -->
@@ -10,7 +11,7 @@ $services = \App\Models\Service::where('status',1)->get();
 
              <a href="/" class="navbar-brand p-0">
                  <!-- <h1 class="text-primary m-0"><i class="fas fa-star-of-life me-3"></i>Terapia</h1> -->
-                 <img src="{{ asset('frontend') }}/img/logo.png" alt="Elite" class="logo">
+                 <img src="{{ Storage::url($setting->header_logo) }}" alt="{{ $setting->company_name }}" class="logo">
              </a>
 
              <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -39,9 +40,11 @@ $services = \App\Models\Service::where('status',1)->get();
                      </div>
                  </div>
              </div>
-             <a href="#" class="btn btn-primary rounded-pill text-white py-2 px-4 flex-wrap flex-sm-shrink-0">Chat
-                 With
-                 Us</a>
+             <a href="https://wa.me/{{$setting->phone_one}}" target="_blank" 
+            class="btn btn-primary rounded-pill text-white py-2 px-4 flex-wrap flex-sm-shrink-0">
+            Chat With Us
+            </a>
+
          </nav>
      </div>
 
@@ -55,11 +58,11 @@ $services = \App\Models\Service::where('status',1)->get();
 
              <!-- Center: Logo -->
              <a href="/" class="navbar-brand mx-auto p-0">
-                 <img src="{{ asset('frontend') }}/img/logo.png" alt="Elite" class="logo" style="height: 40px;">
+                 <img src="{{ Storage::url($setting->header_logo) }}" alt="{ $setting->company_name }}" class="logo" style="height: 40px;">
              </a>
 
              <!-- Right: Chat Button -->
-             <a href="#" class="btn btn-primary rounded-pill text-white py-1 px-3">Chat With Us</a>
+             <a href="https://wa.me/{{$setting->phone_one}}" class="btn btn-primary rounded-pill text-white py-1 px-3">Chat With Us</a>
          </div>
      </nav>
 
@@ -74,9 +77,9 @@ $services = \App\Models\Service::where('status',1)->get();
                  <li class="border-bottom">
                      <a href="/" class="d-block px-3 py-2 text-dark text-decoration-none">Home</a>
                  </li>
-                 <li class="border-bottom">
+                 <!-- <li class="border-bottom">
                      <a href="whyeph.html" class="d-block px-3 py-2 text-dark text-decoration-none">Why EPH</a>
-                 </li>
+                 </li> -->
                  <li class="border-bottom">
                      <button
                          class="w-100 d-flex justify-content-between align-items-center px-3 py-2 border-0 bg-transparent toggle-submenu">
@@ -84,21 +87,18 @@ $services = \App\Models\Service::where('status',1)->get();
                          <i class="fa fa-chevron-down"></i>
                      </button>
                      <ul class="submenu list-unstyled ps-4" style="display: none;">
-                         <li><a href="#" class="d-block py-2 text-dark text-decoration-none">Website Design &
-                                 Development</a></li>
-                         <li><a href="#" class="d-block py-2 text-dark text-decoration-none">Property Preservation
-                                 Processing</a></li>
-                         <li><a href="#" class="d-block py-2 text-dark text-decoration-none">Cloud Web Hosting</a>
-                         </li>
-                         <li><a href="#" class="d-block py-2 text-dark text-decoration-none">Software Solutions</a>
-                         </li>
+
+                            @foreach($services as $item)
+                             <li><a href="{{ route('service-single',$item->title) }}" class="d-block py-2 text-dark text-decoration-none">- {{ $item->title }}</a></li>
+                             @endforeach
+
                      </ul>
                  </li>
                  <li class="border-bottom">
-                     <a href="portfolio.html" class="d-block px-3 py-2 text-dark text-decoration-none">Portfolio</a>
+                     <a href="{{ route('portfolio') }}" class="d-block px-3 py-2 text-dark text-decoration-none">Portfolio</a>
                  </li>
                  <li class="border-bottom">
-                     <a href="faq.html" class="d-block px-3 py-2 text-dark text-decoration-none">FAQ</a>
+                     <a href="{{route('faq')}}" class="d-block px-3 py-2 text-dark text-decoration-none">FAQ</a>
                  </li>
                  <li class="border-bottom">
                      <button
@@ -107,11 +107,11 @@ $services = \App\Models\Service::where('status',1)->get();
                          <i class="fa fa-chevron-down"></i>
                      </button>
                      <ul class="submenu list-unstyled ps-4" style="display: none;">
-                         <li><a href="about.html" class="d-block py-2 text-dark text-decoration-none">About Us</a>
+                         <li><a href="{{ route('about-us')}}" class="d-block py-2 text-dark text-decoration-none">About Us</a>
                          </li>
-                         <li><a href="carrer.html" class="d-block py-2 text-dark text-decoration-none">Career</a>
+                         <li><a href="{{ route('page', ['slug' => 'career']) }}" class="d-block py-2 text-dark text-decoration-none">Career</a>
                          </li>
-                         <li><a href="contact.html" class="d-block py-2 text-dark text-decoration-none">Contact
+                         <li><a href="{{route('contact')}}" class="d-block py-2 text-dark text-decoration-none">Contact
                                  Us</a></li>
                      </ul>
                  </li>

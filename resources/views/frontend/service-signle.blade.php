@@ -6,7 +6,7 @@
 <div class="container-fluid bg-breadcrumb">
     <div class="container text-center" style="max-width: 900px;">
         <h3 class="text-white display-3 mb-4 wow fadeInDown" data-wow-delay="0.1s">{{$service->title}}</h1>
-         <p class="my-3 text-light">{{ $service->description }}</p>
+            <p class="my-3 text-light">{{ $service->description }}</p>
     </div>
 </div>
 
@@ -59,7 +59,7 @@
                 </div>
             </div>
             @endforeach
-           
+
         </div>
     </div>
 </section>
@@ -79,7 +79,7 @@
         </div>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 
-        @foreach($webbuild as $item)
+            @foreach($webbuild as $item)
             <div class="col">
                 <div class="card h-100">
                     <div class="card-body">
@@ -92,9 +92,9 @@
 
             @endforeach
 
-           
 
-           
+
+
 
 
 
@@ -107,28 +107,16 @@
 <div class="container-fluid about bg-light py-5">
     <div class="container py-5">
 
+        @foreach($what as $item)
         <div class="highlight-card">
             <div class="highlight-title">
-                <i class="bi bi-tools"></i> What We Are Doing
+                <i class="bi bi-tools"></i>{{$item->title}}
             </div>
             <p>
-                <strong>Elite Processors House LLC (EPH)</strong> provides a comprehensive range of services
-                tailored to the needs of property preservation companies. We give clients the flexibility to choose
-                only the services they need—ensuring a custom-fit solution for their business model.
-            </p>
-            <p>
-                Founded to meet the rising demand for high-volume, high-quality work order processing, EPH has
-                quickly earned a reputation for reliability, precision, and exceptional turnaround times. We
-                specialize in updating Ready-for-Office (RFO) orders with speed and accuracy, without compromising
-                quality.
-            </p>
-            <p>
-                Our success lies in a disciplined approach to quality control. Every work order is reviewed
-                thoroughly, and our in-house team is routinely evaluated to maintain the industry’s highest
-                standards. By investing in efficiency and accountability, we deliver consistent results that support
-                your operational success.
+                {{$item->description}}
             </p>
         </div>
+        @endforeach
 
 
     </div>
@@ -140,48 +128,17 @@
         <div class="workflow-title">
             <i class="bi bi-arrow-repeat"></i> Our Processing Workflow
         </div>
+
         <div class="workflow-list">
+            @foreach($workflow as $item)
             <div class="workflow-item">
                 <i class="bi bi-check-circle-fill workflow-icon"></i>
-                <div class="workflow-text">Download work order photos from PPW, websites, or FTP</div>
+                <div class="workflow-text">{{$item->title}}</div>
             </div>
-            <div class="workflow-item">
-                <i class="bi bi-check-circle-fill workflow-icon"></i>
-                <div class="workflow-text">Reorganize & match photos according to order instructions</div>
-            </div>
-            <div class="workflow-item">
-                <i class="bi bi-check-circle-fill workflow-icon"></i>
-                <div class="workflow-text">Label photos (e.g. before, during, after, bid, other)</div>
-            </div>
-            <div class="workflow-item">
-                <i class="bi bi-check-circle-fill workflow-icon"></i>
-                <div class="workflow-text">Create & submit bids based on order notes, PCR, and photos</div>
-            </div>
-            <div class="workflow-item">
-                <i class="bi bi-check-circle-fill workflow-icon"></i>
-                <div class="workflow-text">Estimate costs using tools like RepairBase, XactPRM, or custom price
-                    sheets</div>
-            </div>
-            <div class="workflow-item">
-                <i class="bi bi-check-circle-fill workflow-icon"></i>
-                <div class="workflow-text">Prepare invoices using approved pricing, client notes, and PCR
-                    information</div>
-            </div>
-            <div class="workflow-item">
-                <i class="bi bi-check-circle-fill workflow-icon"></i>
-                <div class="workflow-text">Upload reports such as dump receipts, damage reports, and cost estimators
-                </div>
-            </div>
-            <div class="workflow-item">
-                <i class="bi bi-check-circle-fill workflow-icon"></i>
-                <div class="workflow-text">Send daily reports for pending orders with issues and processed orders
-                    with invoice details</div>
-            </div>
-            <div class="workflow-item">
-                <i class="bi bi-check-circle-fill workflow-icon"></i>
-                <div class="workflow-text">Handle denials promptly and resubmit with corrections</div>
-            </div>
+            @endforeach
         </div>
+
+
     </div>
 </section>
 
@@ -197,28 +154,20 @@
         </div>
 
         <div class="d-flex gap-3 justify-content-center m-auto row">
-            <div class="col-lg-3 wow fadeInLeft" data-wow-delay="0.2s">
-                <div class="feature-list pt-3">
-                    <div class="feature-item"><span>1. Advanced Designs</span></div>
-                    <div class="feature-item"><span>2. Creative Team</span></div>
-                    <div class="feature-item"><span>3. Tailor-Made Solutions</span></div>
-                    <div class="feature-item"><span>4. Affordable Price</span></div>
-                    <div class="feature-item"><span>5. Punctual Delivery</span></div>
-                    <div class="feature-item"><span>6. Quality Assurance</span></div>
-                    <div class="feature-item"><span>7. Quick Support</span></div>
+
+            <div class="col-lg-6 m-auto">
+                <div class="row feature-list">
+                    @foreach($workflow as $item)
+                    <div class="col-lg-6">
+                        <div class="feature-item"><span>{{ $item->title }}</span></div>
+                    </div>
+                    @endforeach
+
                 </div>
             </div>
-            <div class="col-lg-3 wow fadeInLeft" data-wow-delay="0.2s">
-                <div class="feature-list pt-3">
-                    <div class="feature-item"><span>1. Advanced Designs</span></div>
-                    <div class="feature-item"><span>2. Creative Team</span></div>
-                    <div class="feature-item"><span>3. Tailor-Made Solutions</span></div>
-                    <div class="feature-item"><span>4. Affordable Price</span></div>
-                    <div class="feature-item"><span>5. Punctual Delivery</span></div>
-                    <div class="feature-item"><span>6. Quality Assurance</span></div>
-                    <div class="feature-item"><span>7. Quick Support</span></div>
-                </div>
-            </div>
+
+
+
         </div>
 
 
@@ -242,96 +191,40 @@
 <section id="hero" class="hero section light-background pb-5" style="background: #fff">
 
     <div class="container">
-        <div class="row gy-5">
-
-            <div class="col-12 col-lg-6 hero-img order-2 order-lg-1" data-aos="zoom-out" data-aos-delay="100">
-                <img src="https://rdpnbd.com/storage/uploads/a0bd0f61-ff7e-4e28-84bb-5783cb657834.png"
-                    class="img-fluid w-100" alt="">
+        @foreach($workarea as $item)
+        <div class="row gy-5 align-items-center">
+            @if($loop->iteration % 2 == 1)
+            {{-- Odd (1, 3, 5 ...) → Image Left, Content Right --}}
+            <div class="col-12 col-lg-6 order-1 order-lg-1 hero-img" data-aos="zoom-out" data-aos-delay="100">
+                <img src="{{ Storage::url($item->image) }}" class="img-fluid w-100" alt="">
             </div>
-            <div class="col-12 col-lg-6 d-flex flex-column justify-content-center order-1 order-lg-2"
-                data-aos="fade-up">
-                <h3 class="workflow-title">RDP Enterprise Solutions</h3>
-                <p>Stay ahead with RDP’s enterprise-grade internet — engineered for
-                    stability, scalability, and secure connectivity across your entire
-                    organization. From offices to industrial setups, we’ve got your business
-                    covered.</p>
-                <ul>
-                    <li>Complete Internet & Networking Solutions</li>
-                    <li>High-Speed, Secure, and Scalable Connectivity</li>
-                    <li>24/7 Priority Business Support</li>
-                </ul>
+            <div class="col-12 col-lg-6 order-2 order-lg-2 d-flex flex-column justify-content-center" data-aos="fade-up">
+                <h3 class="workflow-title">{{ $item->title }}</h3>
+                {!! $item->description !!}
                 <div class="d-flex">
-                    <a href="https://rdpnbd.com/about"
-                        class="btn btn-primary rounded-pill text-white py-3 px-5">Explore More</a>
+                    <a href="{{ $item->button_link }}"
+                        @if($item->button_type==1) target="_blank" @endif
+                        class="btn btn-primary rounded-pill text-white py-3 px-5">{{ $item->button_name }}</a>
                 </div>
             </div>
-
-            <div class="col-12 col-lg-6 d-flex flex-column justify-content-center order-lg-1" data-aos="fade-up">
-                <h3 class="workflow-title">RDP for Home Users</h3>
-                <p>Enjoy premium home internet powered by the nation’s largest fiber
-                    broadband network. Whether you’re streaming in 4K, attending virtual
-                    meetings, gaming online, or working remotely — RDP ensures high-speed,
-                    stable connectivity every time.</p>
-                <ul>
-                    <li>Speeds up to 100 Mbps – Truly Unlimited</li>
-                    <li>Crystal-Clear 4K Streaming (YouTube, Facebook & More)</li>
-                    <li>Lag-Free Gaming with Low Latency Network</li>
-                </ul>
+            @else
+            {{-- Even (2, 4, 6 ...) → Content Left, Image Right --}}
+            <div class="col-12 col-lg-6 order-1 order-lg-1 d-flex flex-column justify-content-center" data-aos="fade-up">
+                <h3 class="workflow-title">{{ $item->title }}</h3>
+                {!! $item->description !!}
                 <div class="d-flex">
-                    <a href="https://rdpnbd.com/about"
-                        class="btn btn-primary rounded-pill text-white py-3 px-5">Explore More</a>
+                    <a href="{{ $item->button_link }}"
+                        @if($item->button_type==1) target="_blank" @endif
+                        class="btn btn-primary rounded-pill text-white py-3 px-5">{{ $item->button_name }}</a>
                 </div>
             </div>
-            <div class="col-12 col-lg-6 hero-img order-lg-2" data-aos="zoom-out" data-aos-delay="100">
-                <img src="https://rdpnbd.com/storage/uploads/21b0efc3-59cf-4a6e-98bd-4c36ff385aa5.png"
-                    class="img-fluid w-100" alt="">
+            <div class="col-12 col-lg-6 order-2 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="100">
+                <img src="{{ Storage::url($item->image) }}" class="img-fluid w-100" alt="">
             </div>
+            @endif
         </div>
-        <div class="row gy-5">
+        @endforeach
 
-            <div class="col-12 col-lg-6 hero-img order-2 order-lg-1" data-aos="zoom-out" data-aos-delay="100">
-                <img src="https://rdpnbd.com/storage/uploads/a0bd0f61-ff7e-4e28-84bb-5783cb657834.png"
-                    class="img-fluid w-100" alt="">
-            </div>
-            <div class="col-12 col-lg-6 d-flex flex-column justify-content-center order-1 order-lg-2"
-                data-aos="fade-up">
-                <h3 class="workflow-title">RDP Enterprise Solutions</h3>
-                <p>Stay ahead with RDP’s enterprise-grade internet — engineered for
-                    stability, scalability, and secure connectivity across your entire
-                    organization. From offices to industrial setups, we’ve got your business
-                    covered.</p>
-                <ul>
-                    <li>Complete Internet & Networking Solutions</li>
-                    <li>High-Speed, Secure, and Scalable Connectivity</li>
-                    <li>24/7 Priority Business Support</li>
-                </ul>
-                <div class="d-flex">
-                    <a href="https://rdpnbd.com/about"
-                        class="btn btn-primary rounded-pill text-white py-3 px-5">Explore More</a>
-                </div>
-            </div>
-
-            <div class="col-12 col-lg-6 d-flex flex-column justify-content-center order-lg-1" data-aos="fade-up">
-                <h3 class="workflow-title">RDP for Home Users</h3>
-                <p>Enjoy premium home internet powered by the nation’s largest fiber
-                    broadband network. Whether you’re streaming in 4K, attending virtual
-                    meetings, gaming online, or working remotely — RDP ensures high-speed,
-                    stable connectivity every time.</p>
-                <ul>
-                    <li>Speeds up to 100 Mbps – Truly Unlimited</li>
-                    <li>Crystal-Clear 4K Streaming (YouTube, Facebook & More)</li>
-                    <li>Lag-Free Gaming with Low Latency Network</li>
-                </ul>
-                <div class="d-flex">
-                    <a href="https://rdpnbd.com/about"
-                        class="btn btn-primary rounded-pill text-white py-3 px-5">Explore More</a>
-                </div>
-            </div>
-            <div class="col-12 col-lg-6 hero-img order-lg-2" data-aos="zoom-out" data-aos-delay="100">
-                <img src="https://rdpnbd.com/storage/uploads/21b0efc3-59cf-4a6e-98bd-4c36ff385aa5.png"
-                    class="img-fluid w-100" alt="">
-            </div>
-        </div>
 
 
     </div>

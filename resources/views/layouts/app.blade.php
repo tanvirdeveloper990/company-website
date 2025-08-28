@@ -10,7 +10,7 @@ $setting = \App\Models\Setting::first();
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    
+
     <meta name="author" content="{{ $setting->meta_title }}">
     <meta property="og:title" content="{{ $setting->meta_title }}">
     <meta property="og:description" content="{{ $setting->meta_description }}">
@@ -28,7 +28,7 @@ $setting = \App\Models\Setting::first();
     <link rel="icon" href="{{ Storage::url($setting->favicon) }}" type="image/x-icon">
 
 
-   
+
     <title>@yield('title')</title>
     <meta content="@yield('description')" name="description">
     <meta content="@yield('keyword')" name="keywords">
@@ -62,22 +62,23 @@ $setting = \App\Models\Setting::first();
         <div class="row gx-0 align-items-center" style="height: 45px;">
             <div class="col-lg-9 text-center text-lg-start mb-lg-0">
                 <div class="d-flex flex-wrap">
-                    <a href="#" class="text-light me-4"><i class="fas fa-map-marker-alt me-2"></i>USA 4952 Estes Ave,
-                        Skokie, IL ZIP- 60077</a>
-                    <a href="#" class="text-light me-4"><i class="fas fa-phone-alt me-2"></i>+1 312-619-0556</a>
-                    <a href="#" class="text-light me-0"><i
-                            class="fas fa-envelope me-2"></i>contact.eliteprocessorshouse@gmail.com</a>
+                    <a href="#" class="text-light me-4"><i class="fas fa-map-marker-alt me-2"></i>{{ $setting->address }}</a>
+                    <a href="https://wa.me/{{$setting->phone_one}}" class="text-light me-4"><i class="fas fa-phone-alt me-2"></i>{{ $setting->phone_one }}</a>
+                    <a href="mailto:{{ $setting->email_one }}" class="text-light me-0">
+                        <i class="fas fa-envelope me-2"></i>{{ $setting->email_one }}
+                    </a>
+
                 </div>
             </div>
             <div class="col-lg-3 text-center text-lg-end social">
                 <div class="d-flex align-items-center justify-content-end">
-                    <a href="#" class="btn btn-light btn-square border rounded-circle nav-fill me-3"><i
+                    <a target="_blank" href="{{ $setting->facebook }}" class="btn btn-light btn-square border rounded-circle nav-fill me-3"><i
                             class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="btn btn-light btn-square border rounded-circle nav-fill me-3"><i
+                    <a target="_blank" href="{{ $setting->twitter }}" class="btn btn-light btn-square border rounded-circle nav-fill me-3"><i
                             class="fab fa-twitter"></i></a>
-                    <a href="#" class="btn btn-light btn-square border rounded-circle nav-fill me-3"><i
+                    <a target="_blank" href="{{ $setting->instagram }}" class="btn btn-light btn-square border rounded-circle nav-fill me-3"><i
                             class="fab fa-instagram"></i></a>
-                    <a href="#" class="btn btn-light btn-square border rounded-circle nav-fill me-0"><i
+                    <a target="_blank" href="{{ $setting->linkedin }}" class="btn btn-light btn-square border rounded-circle nav-fill me-0"><i
                             class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
@@ -143,7 +144,7 @@ $setting = \App\Models\Setting::first();
         });
     </script>
 
-@if(session('success'))
+    @if(session('success'))
     <script>
         Swal.fire({
             toast: true,
@@ -202,8 +203,8 @@ $setting = \App\Models\Setting::first();
             }
         });
     </script>
-    
-    
+
+
 
     @yield('js')
 </body>
